@@ -4,7 +4,7 @@ import util.Valueable;
 
 public class Token implements Valueable{
 
-    public enum Tag { EOF, NUM, OP, REV}
+    public enum Tag { EOF, NUM, OP, REV, BOOL}
 
     final Tag tag;
 
@@ -14,6 +14,10 @@ public class Token implements Valueable{
 
     public Tag getTag() {
         return tag;
+    }
+
+    public Boolean isEOF() {
+        return this.tag == Tag.EOF;
     }
 
     @Override
@@ -27,12 +31,17 @@ public class Token implements Valueable{
     }
 
     @Override
-    public Operator.OperatorType getOperatorType() {
+    public Operator.OperatorType getOperatorValue() {
         return null;
     }
 
     @Override
-    public Reserved.ReservedType getReservedType() {
+    public Reserved.ReservedType getReservedValue() {
+        return null;
+    }
+
+    @Override
+    public Boolean getBooleanValue() {
         return null;
     }
 }

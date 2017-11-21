@@ -25,11 +25,16 @@ public class Scanner {
                 while (Character.isLetter(imput.toCharArray()[lookahead])) {
                     lookahead++;
                 }
-                tokenList.add(new Reserved(imput.substring(index, lookahead)));
+                if (Bool.toBoolean(imput.substring(index, lookahead)) != null) {
+                    tokenList.add(new Bool(imput.substring(index, lookahead)));
+                }
+                else {
+                    tokenList.add(new Reserved(imput.substring(index, lookahead)));
+                }
             }
 
             else if (Character.isDigit(current)) {
-                lookahead = index + 1;
+                 lookahead = index + 1;
                 while (Character.isDigit(imput.toCharArray()[lookahead]) || imput.toCharArray()[lookahead] == '.'
                         || imput.toCharArray()[lookahead] == 'e') {
                     lookahead++;
@@ -44,7 +49,7 @@ public class Scanner {
                         tokenList.add(new Operator(OperatorType.SUB));
                     else if (last.getTag() == Tag.OP) {
                         Operator o = (Operator)last;
-                        if (o.getOperatorType() == OperatorType.RB)
+                        if (o.getOperatorValue() == OperatorType.RB)
                             tokenList.add(new Operator(OperatorType.SUB));
                         else
                             tokenList.add(new Operator(OperatorType.NEG));

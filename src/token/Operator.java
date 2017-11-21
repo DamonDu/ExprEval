@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Operator extends Token{
 
-    public enum OperatorType { ADD, SUB, MUL, DIV, POW, NEG, QUE, COL, GREATER, LESS, GOE, LOE, EQ, GOL, AND, OR, NO, LB, RB }
+    public enum OperatorType { ADD, SUB, MUL, DIV, POW, NEG, QUE, COL, GREATER, LESS, GOE, LOE, EQ, GOL, AND, OR, NO, LB, RB, COM }
     OperatorType value;
 
     static Map<String, OperatorType> stringMap = new HashMap<>() {
@@ -27,6 +27,7 @@ public class Operator extends Token{
             put(">=", OperatorType.GOE);
             put("<=", OperatorType.LOE);
             put("<>", OperatorType.GOL);
+            put(",", OperatorType.COM);
         }
     };
 
@@ -54,8 +55,12 @@ public class Operator extends Token{
     }
 
     @Override
-    public OperatorType getOperatorType() {
+    public OperatorType getOperatorValue() {
         return this.value;
     }
 
+    @Override
+    public String getStringValue() {
+        return this.value.toString();
+    }
 }

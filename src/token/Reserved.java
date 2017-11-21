@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Reserved extends Token {
 
-    public enum ReservedType { SIN, COS, MAX, MIN, TRUE, FALSE}
+    public enum ReservedType { SIN, COS, MAX, MIN}
     ReservedType value;
 
     static Map<String, ReservedType> stringMap = new HashMap<>() {
@@ -14,8 +14,6 @@ public class Reserved extends Token {
             put("cos", ReservedType.COS);
             put("max", ReservedType.MAX);
             put("min", ReservedType.MIN);
-            put("true", ReservedType.TRUE);
-            put("false", ReservedType.FALSE);
         }
     };
 
@@ -34,8 +32,13 @@ public class Reserved extends Token {
     }
 
     @Override
-    public ReservedType getReservedType() {
+    public ReservedType getReservedValue() {
         return this.value;
+    }
+
+    @Override
+    public String getStringValue() {
+        return this.value.toString();
     }
 }
 

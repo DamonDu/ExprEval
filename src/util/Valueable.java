@@ -5,7 +5,8 @@ import token.Reserved.ReservedType;
 
 public interface Valueable {
     double getDoubleValue();
+    Boolean getBooleanValue();
     String getStringValue();
-    OperatorType getOperatorType();
-    ReservedType getReservedType();
+    OperatorType getOperatorValue();
+    ReservedType getReservedValue();
 }

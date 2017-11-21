@@ -24,4 +24,9 @@ public class Num extends Token {
     public double getDoubleValue() {
         return value;
     }
+
+    @Override
+    public String getStringValue() {
+        return "DEC";
+    }
 }
